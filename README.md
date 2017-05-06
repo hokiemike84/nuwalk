@@ -1,5 +1,5 @@
 # tskwalk
-An alternative to fiwalk that utilizes The Sleuth Kit to generate DFXML for file information
+An alternative to fiwalk that utilizes The Sleuth Kit to generatf a DFXML for file information
 
 ## Usage
 Tskwalk is a python script that operates off of a TSK sqlite database.  The database can be generated using tsk_loaddb.exe from The Sleuth Kit.
