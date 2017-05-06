@@ -6,7 +6,7 @@ from jinja2 import Template, Environment
 
 def main(args):
     parser = argparse.ArgumentParser(description='Exports tsk sqlite database file information into DFXML format as an alternative to fiwalk')
-    parser.add_argument('database', help='tsk database containint file data to export to DFXML')
+    parser.add_argument('database', help='tsk database containing file data to export to DFXML')
     parser.add_argument('output_file', help='output file name')
 
     args = parser.parse_args()
