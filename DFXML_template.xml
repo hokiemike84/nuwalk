@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dfxml
+  xmlns='http://www.forensicswiki.org/wiki/Category:Digital_Forensics_XML'
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xmlns:dc='http://purl.org/dc/elements/1.1/'
+  version='1.0'>
+  <creator>
+    <program>tsk</program>
+  </creator>
+  <source>
+    <!-- <imagefile></imagefile> -->
+  </source>
+  <volume>
+  {%- for item in files %}
+    <fileobject>
+      <parent_object>
+        <inode>?</inode>
+      </parent_object>
+      <filename>{{ item.filename }}</filename>
+      <filesize>{{ item.filesize }}</filesize>
+      <meta_type>{{ item.meta_type }}</meta_type>
+      <mode>{{ item.mode }}</mode>
+      <uid>{{ item.uid }}</uid>
+      <gid>{{ item.gid }}</gid>
+      <byte_runs>
+        {%- for run in item.runs %}
+        <byte_run img_offset='{{ run[1] }}' len='{{ run[2] }}'/>
+        {%- endfor %}
+      </byte_runs>
+      <hashdigest type='md5'>{{ item.md5 }}</hashdigest>
+    </fileobject>
+  {%- endfor %}
+  </volume>
+</dfxml>
