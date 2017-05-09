@@ -10,25 +10,24 @@
   <source>
     <!-- <imagefile></imagefile> -->
   </source>
-  <volume>
-  {%- for item in files %}
+  {%- for volume in volumes %}
+  <volume offset='{{volume[0]}}'>
+  {%- for file in volume[1] %}
     <fileobject>
-      <parent_object>
-        <inode>?</inode>
-      </parent_object>
-      <filename>{{ item.filename }}</filename>
-      <filesize>{{ item.filesize }}</filesize>
-      <meta_type>{{ item.meta_type }}</meta_type>
-      <mode>{{ item.mode }}</mode>
-      <uid>{{ item.uid }}</uid>
-      <gid>{{ item.gid }}</gid>
+      <filename>{{ file.filename|e }}</filename>
+      <filesize>{{ file.filesize }}</filesize>
+      <meta_type>{{ file.meta_type }}</meta_type>
+      <mode>{{ file.mode }}</mode>
+      <uid>{{ file.uid }}</uid>
+      <gid>{{ file.gid }}</gid>
       <byte_runs>
-        {%- for run in item.runs %}
+        {%- for run in file.runs %}
         <byte_run img_offset='{{ run[1] }}' len='{{ run[2] }}'/>
         {%- endfor %}
       </byte_runs>
-      <hashdigest type='md5'>{{ item.md5 }}</hashdigest>
+      <hashdigest type='md5'>{{ file.md5 }}</hashdigest>
     </fileobject>
   {%- endfor %}
   </volume>
+  {%- endfor %}
 </dfxml>
